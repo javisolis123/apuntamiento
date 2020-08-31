@@ -97,21 +97,19 @@ def mostrar_actual():
             MSGMIN = "  Min: " + str(minimo)
             MSGMAX = "  Max: " + str(maximo)
             MSGACT = "  Act: " + str(aux.canal1)
-            borrar_lcd()
             display.lcd_display_string("SMR Principal", 1)
             display.lcd_display_string(MSGMAX, 2)
             display.lcd_display_string(MSGACT, 3)
             display.lcd_display_string(MSGMIN, 4)
-        else:
-            for dato in resp:
-                if dato.canal2 > maximo:
-                    maximo = dato.canal2
-                if dato.canal2 < minimo:
-                    minimo = dato.canal2
+    else:
+        for dato in resp:
+            if dato.canal2 > maximo:
+                maximo = dato.canal2
+            if dato.canal2 < minimo:
+                minimo = dato.canal2
             MSGMIN = "  Min: " + str(minimo)
             MSGMAX = "  Max: " + str(maximo)
             MSGACT = "  Act: " + str(aux.canal1)
-            borrar_lcd()
             display.lcd_display_string("SMR Secundario", 1)
             display.lcd_display_string(MSGMAX, 2)
             display.lcd_display_string(MSGACT, 3)
@@ -135,15 +133,14 @@ def mostrar_conf():
     display.lcd_display_string(linea2, 4)
     
 def pantalla_inicio(num):
+    borrar_lcd()
     if num == 0:
-        borrar_lcd()
         mostrar_alarmas()
     elif num == 1:
-        borrar_lcd()
         mostrar_actual()
     elif num == 2:
-        borrar_lcd()
         mostrar_conf()
+aux5 = 0
 while True:
     #Se crea un objeto con la conexion a la base de datos de MariaDB
     engine = create_engine('mysql+pymysql://javi:javiersolis12@192.168.10.20/Tuti')
@@ -152,9 +149,12 @@ while True:
     res = connection.execute(conf)
     estado = res.fetchone()    
     if estado.apunta == "activado":
+        borrar_lcd()
         mostrar_actual()               
     else:
-        num = random.randrange(3)
-        print("El numero random es: " + str(num))
-        pantalla_inicio(num)
-    time.sleep(0.2)
+        pantalla_inicio(aux5)
+    print(aux5)
+    aux5 += 1
+    if aux5 > 2:
+        aux5 = 0
+    time.sleep(1)
