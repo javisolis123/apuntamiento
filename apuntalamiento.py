@@ -107,8 +107,8 @@ def mostrar_actual():
                     maximo = dato.canal2
                 if dato.canal2 < minimo:
                     minimo = dato.canal2
-            MSGMIN = "  Min: " + str(min)
-            MSGMAX = "  Max: " + str(max)
+            MSGMIN = "  Min: " + str(minimo)
+            MSGMAX = "  Max: " + str(maximo)
             MSGACT = "  Act: " + str(aux.canal1)
             display.lcd_display_string("         SMR", 1)
             display.lcd_display_string(MSGMAX, 2)
@@ -155,4 +155,4 @@ while True:
         num = random.randrange(3)
         print("El numero random es: " + str(num))
         pantalla_inicio(num)
-    time.sleep(1)
+    time.sleep(0.2)
