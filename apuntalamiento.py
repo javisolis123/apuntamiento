@@ -153,5 +153,6 @@ while True:
         mostrar_actual()               
     else:
         num = random.randrange(3)
+        print("El numero random es: " + num)
         pantalla_inicio(num)
     time.sleep(1)
