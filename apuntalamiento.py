@@ -154,6 +154,4 @@ while True:
     else:
         num = random.randrange(3)
         pantalla_inicio(num)
-        time.sleep(2)
-
-    time.sleep(0.5)
+    time.sleep(1)
