@@ -75,7 +75,7 @@ def mostrar_alarmas():
                 pos += 1
                 cont += 1
                 if pos > 4:
-                    time.sleep(2)
+                    time.sleep(1)
                     pos = 1
                     borrar_lcd()
 
