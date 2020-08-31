@@ -75,7 +75,7 @@ def mostrar_alarmas():
                 pos += 1
                 cont += 1
                 if pos > 4:
-                    time.sleep(3)
+                    time.sleep(2)
                     pos = 1
                     borrar_lcd()
 
@@ -148,16 +148,12 @@ while True:
     connection = engine.connect()
     conf = select([configuracion])
     res = connection.execute(conf)
-    estado = res.fetchone()
-    #Seleccionamos los datos de la tabla configurar
-    
+    estado = res.fetchone()    
     if estado.apunta == "activado":
         mostrar_actual()               
-            
     else:
-        #num = random.randrange(3)
-        #pantalla_inicio(num)
-        mostrar_conf()
-        time.sleep(3)
+        num = random.randrange(3)
+        pantalla_inicio(num)
+        time.sleep(2)
 
     time.sleep(0.5)
