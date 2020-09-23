@@ -131,7 +131,7 @@ def mostrar_conf():
     display.lcd_display_string(linea1, 2)
     display.lcd_display_string("TempMax   TempMin", 3)
     display.lcd_display_string(linea2, 4)
-    
+
 def pantalla_inicio(num):
     borrar_lcd()
     if num == 0:
@@ -147,10 +147,10 @@ while True:
     connection = engine.connect()
     conf = select([configuracion])
     res = connection.execute(conf)
-    estado = res.fetchone()    
+    estado = res.fetchone()
     if estado.apunta == "activado":
         borrar_lcd()
-        mostrar_actual()               
+        mostrar_actual()
     else:
         pantalla_inicio(aux5)
     print(aux5)
